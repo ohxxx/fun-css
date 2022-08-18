@@ -17,7 +17,7 @@ html,body {
     "Noto Color Emoji"
   ;
   border-radius: 8px;
-  overflow: hidden;
+  overflow: auto;
   background: #242424;
 }
 
@@ -41,15 +41,14 @@ html,body {
 }
 
 .footer {
-  position: absolute;
-  bottom: 0;
   width: 100%;
-  height: 100px;
+  height: 50px;
   font-size: 14px;
   display: flex;
   justify-content: center;
   align-items: center;
-  color: rgba(156, 163, 175, 0.7)
+  color: rgba(156, 163, 175, 0.7);
+  background: #242424;
 }
 
 /*****************************************
@@ -689,3 +688,152 @@ html,body {
 @keyframes i10 {
     100% {background-position: -20px 0%,20px 0%}
 }
+
+/*****************************************
+*                                        *
+*                 spinner                *
+*                                        *
+*****************************************/
+.spinner-1 {
+  width: 50px;
+  aspect-ratio: 1;
+  border-radius: 50%;
+  border: 8px solid;
+  border-color: #ffc107 #0000;
+  animation: s1 1s infinite;
+}
+@keyframes s1 {to{transform: rotate(.5turn)}}
+
+.spinner-2 {
+  width: 50px;
+  aspect-ratio: 1;
+  border-radius: 50%;
+  border: 8px solid #ffc107;
+  border-right-color: #0000;
+  animation: s2 1s infinite linear;
+}
+@keyframes s2 {to{transform: rotate(1turn)}}
+
+.spinner-3 {
+  width: 50px;
+  padding: 8px;
+  aspect-ratio: 1;
+  border-radius: 50%;
+  background: #ffc107;
+  --_m: 
+    conic-gradient(#0000 10%,#000),
+    linear-gradient(#000 0 0) content-box;
+  -webkit-mask: var(--_m);
+          mask: var(--_m);
+  -webkit-mask-composite: source-out;
+          mask-composite: subtract;
+  animation: s3 1s infinite linear;
+}
+@keyframes s3 {to{transform: rotate(1turn)}}
+
+.spinner-4 {
+  width: 50px;
+  --b: 8px; /* the border thickness */
+  aspect-ratio: 1;
+  border-radius: 50%;
+  padding: 1px;
+  background: conic-gradient(#0000 10%,#ffc107) content-box;
+  -webkit-mask:
+    repeating-conic-gradient(#0000 0deg,#000 1deg 20deg,#0000 21deg 36deg),
+    radial-gradient(farthest-side,#0000 calc(100% - var(--b) - 1px),#000 calc(100% - var(--b)));
+  -webkit-mask-composite: destination-in;
+  mask-composite: intersect;
+  animation:s4 1s infinite steps(10);
+}
+@keyframes s4 {to{transform: rotate(1turn)}}
+
+.spinner-5 {
+  width: 50px;
+  --b: 8px; /* the border thickness */
+  aspect-ratio: 1;
+  border-radius: 50%;
+  background: #ffc107;
+  -webkit-mask:
+    repeating-conic-gradient(#0000 0deg,#000 1deg 70deg,#0000 71deg 90deg),
+    radial-gradient(farthest-side,#0000 calc(100% - var(--b) - 1px),#000 calc(100% - var(--b)));
+  -webkit-mask-composite: destination-in;
+  mask-composite: intersect;
+  animation: s5 1s infinite;
+}
+@keyframes s5 {to{transform: rotate(.5turn)}}
+
+.spinner-6 {
+  width: 50px;
+  aspect-ratio: 1;
+  border-radius: 50%;
+  padding: 3px;
+  background: 
+    radial-gradient(farthest-side,#ffc107 95%,#0000) 50% 0/12px 12px no-repeat,
+    radial-gradient(farthest-side,#0000 calc(100% - 5px),#ffc107 calc(100% - 4px)) content-box;
+  animation: s6 2s infinite ;
+}
+@keyframes s6 {to{transform: rotate(1turn)}}
+
+.spinner-7 {
+  width: 50px;
+  aspect-ratio: 1;
+  --_c: radial-gradient(farthest-side,#ffc107 92%,#0000);
+  background: 
+    var(--_c) top,
+    var(--_c) left,
+    var(--_c) right,
+    var(--_c) bottom;
+  background-size: 12px 12px;
+  background-repeat: no-repeat;
+  animation: s7 1s infinite;
+}
+@keyframes s7 {to{transform: rotate(.5turn)}}
+
+.spinner-8 {
+  width: 50px;
+  aspect-ratio: 1;
+  color: #ffc107;
+  --_c: no-repeat radial-gradient(farthest-side,currentColor 92%,#0000);
+  background: 
+    var(--_c) 50% 0   /12px 12px,
+    var(--_c) 50% 100%/12px 12px,
+    var(--_c) 100% 50%/12px 12px,
+    var(--_c) 0    50%/12px 12px,
+    var(--_c) 50%  50%/12px 12px,
+    conic-gradient(from 90deg at 4px 4px,#0000 90deg,currentColor 0)
+    -4px -4px/calc(50% + 2px) calc(50% + 2px);
+  animation: s8 1s infinite linear;
+}
+@keyframes s8 {to{transform: rotate(.5turn)}}
+
+.spinner-9 {
+  width: 50px;
+  aspect-ratio: 1;
+  border-radius: 50%;
+  background: 
+    radial-gradient(farthest-side,#1c1c1c 95%,#0000) 50% 1px/8px 8px no-repeat,
+    radial-gradient(farthest-side,#0000 calc(100% - 10px),#ffc107 0);
+  animation: s9 2s infinite linear;
+}
+@keyframes s9 {to{transform: rotate(1turn)}}
+
+.spinner-10 {
+  width: 50px;
+  aspect-ratio: 1;
+  color: #ffc107;
+  border-radius: 50%;
+  display: grid;
+  background: 
+    conic-gradient(from 90deg at 4px 4px,#0000 90deg,currentColor 0)
+    -4px -4px/calc(50% + 2px) calc(50% + 2px),
+    radial-gradient(farthest-side,currentColor 6px,#0000 7px calc(100% - 6px),currentColor calc(100% - 5px)) no-repeat;
+  animation: s10 2s infinite linear;
+  position: relative;
+}
+.spinner-10:before {
+  content: "";
+  border-radius: inherit;
+  background: inherit;
+  transform: rotate(45deg);
+}
+@keyframes s10 {to{transform: rotate(.5turn)}}
